@@ -13,7 +13,7 @@ clientRouter
 })
     .get('/:id', (req, res) => {
         const client = db.getOne(req.params.id);
-        if (!client.id) {
+        if (!client) {
             throw new NotFoundError();
         }
         res
@@ -48,7 +48,7 @@ clientRouter
     })
     .get('/form/edit/:id', (req, res) => {
         const client = db.getOne(req.params.id);
-        if (!client.id) {
+        if (!client) {
             throw new NotFoundError();
         }
 
