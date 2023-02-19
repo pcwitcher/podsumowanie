@@ -1,0 +1,50 @@
+<h2>{{client.name}}</h2>
+<table class="header-of-left">
+    <tbody>
+        <tr>
+            <th>
+                E-mail
+            </th>
+            <td>
+                <a href="mailto:{{this.email}}" target="_blank">{{client.email}}</a>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Imię
+            </th>
+            <td>
+                {{client.name}}
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Data następnego kontaktu
+            </th>
+            <td>
+                {{client.nextContactAt}}
+            </td>
+        </tr>
+        <tr>
+           {{#if client.notes}}
+               <th>
+                   Notatki
+               </th>
+               <td>
+                   {{client.notes}}
+               </td>
+           {{/if}}
+        </tr>
+    </tbody>
+</table>
+
+<p>
+<form method="GET" action="/client/form/edit/{{client.id}}">
+    <button type="submit">Edytuj dane</button>
+</form>
+</p>
+
+
+<p>
+    {{> go-to-clients}}
+</p>
