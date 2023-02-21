@@ -2,6 +2,9 @@ const {ValidationError, NotFoundError} = require("../utils/error");
 
 class ClientRecord {
     constructor(obj) {
+        if (obj === undefined) {
+            throw new NotFoundError();
+        }
         const {id, name, email, nextContactAt, notes} = obj;
 
         if (!id || typeof id !== 'string') {
@@ -21,10 +24,6 @@ class ClientRecord {
         }
         if (typeof notes !== 'string') {
             throw new ValidationError('Notatki musza być  tekstem');
-        }
-
-        if (obj.id === undefined) {
-            throw new NotFoundError();
         }
 
         this.id = id;
